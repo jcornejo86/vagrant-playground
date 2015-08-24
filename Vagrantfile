@@ -42,11 +42,6 @@ Vagrant.configure(2) do |config|
     # 
     # config.vm.provision :shell, path: "vm_provision/shell/provision-ubuntu-12.04.sh"
 
-    config.vm.provision :shell do |shell|
-        shell.inline = "touch $1 && chmod 0440 $1 && echo $2 > $1"
-        shell.args = %q{/etc/sudoers.d/root_ssh_agent "Defaults    env_keep += \"SSH_AUTH_SOCK\""}
-    end
-
     #
     # Provisioner - Salt
     #
