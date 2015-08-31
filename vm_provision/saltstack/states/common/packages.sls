@@ -3,3 +3,4 @@ common_packages:
     - names:
       - htop
       - strace
+      - python-pip
