@@ -45,11 +45,14 @@ Vagrant.configure(2) do |config|
     #
     # Provisioner - Salt
     #
+
+    ## For masterless, mount your salt file root
+    config.vm.synced_folder "vm_provision/saltstack/", "/srv/salt/"
+    config.vm.synced_folder "vm_provision/saltstack/config/", "/etc/salt/minion.d/"
   
     config.vm.provision :salt do |salt|
+        salt.minion_config = "vm_provision/saltstack/config/"
         salt.run_highstate = true
-        salt.colorize = true
-        salt.minion_config = "vm_provision/saltstack/config/minion.conf"
         salt.install_type = "stable"
         salt.bootstrap_options = "-P"
         salt.verbose = true
